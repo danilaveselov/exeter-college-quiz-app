@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <h3>{{ quiz.name }}</h3>
+    <p>{{ quiz.description }}</p>
+    <hr>
+    <form method="post">
+      {% csrf_token %}
+      {# form|crispy #}
+      <div class="row">
+        {% for field in form %}
+          <div class="col-md-4 mb-3">
+            <div class="card h-100">
+              <div class="card-header">Question {{ forloop.counter }}</div>
+              <div class="card-body">
+                <div class="fieldWrapper">
+                  {{ field.errors }}
+                  {{ field|as_crispy_field }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <input class="btn btn-primary mt-3 mb-5" type="submit" value="Submit">
+    </form>
+
+  </div>
+</section>
+{% endblock content %}

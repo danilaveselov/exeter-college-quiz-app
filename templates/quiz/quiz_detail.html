@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <h3>{{ quiz.name }}</h3>
+    <p>{{ quiz.description }}</p>
+    <p>
+      {% if request.user.is_superuser %}
+        <a href="{% url 'quiz:question_create' quiz.slug %}" class="btn btn-sm btn-success"><i class="fa-solid fa-plus mr-2"></i>Add Question</a>
+      {% endif %}
+    </p>
+    <div class="row">
+      {% for question in quiz.question_set.all %}
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4><span class="badge badge-primary">Question {{ forloop.counter }}</span></h4>
+            </div>
+            <div class="card-body">
+              <h6>{{ question.question }}</h6>
+              {% if request.user.is_staff %}
+                <ol>
+                  {% for answer in question.answer_set.all %}
+                    <li>{{ answer.answer }}</li>
+                  {% endfor %}
+                </ol>
+              {% endif %}
+            </div>
+            {% if request.user.is_superuser %}
+              <div class="card-footer text-center">
+                <a href="{% url 'quiz:question_update' question.pk %}" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square mr-2"></i>Edit</a>
+                <a href="{% url 'quiz:question_delete' question.pk %}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash mr-2"></i>Delete</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock content %}
