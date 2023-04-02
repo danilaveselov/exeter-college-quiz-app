@@ -1,11 +1,5 @@
 # Quiz App (Exeter College project)
 
-![Screenshot](quizManager.png)
-![Screenshot](quizManager1.png)
-![Screenshot](quizManager2.png)
-![Screenshot](quizManager3.png)
-![Screenshot](quizManager4.png)
-
 ## Overview
 
 This is a comprehensive quiz application created with Django and Bootstrap, designed to enable users to create, view, and undertake quizzes with ease. With its user-friendly interface, multiple permission groups are available to ensure that users have access to specific functionalities based on their roles.
@@ -74,6 +68,12 @@ PASSWORD – 1234
 LOGIN – restricted
 PASSWORD - 1234
 ```
+## Screenshots
+![Screenshot](quizManager.png)
+![Screenshot](quizManager1.png)
+![Screenshot](quizManager2.png)
+![Screenshot](quizManager3.png)
+![Screenshot](quizManager4.png)
 
 #
 
